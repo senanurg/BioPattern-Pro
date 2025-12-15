@@ -1,8 +1,8 @@
 # BioPattern-Pro
+
 🧬 High-performance bioinformatics tool for genome sequencing and algorithm benchmarking (KMP, Boyer-Moore, Suffix Arrays) on large DNA datasets.
 
-
-# 🧬 BioPattern Pro: Yüksek Performanslı Biyoinformatik Analiz Aracı
+## 🧬 BioPattern Pro: Yüksek Performanslı Biyoinformatik Analiz Aracı
 
 ![GitHub top language](https://img.shields.io/github/languages/top/KullaniciAdiniz/BIOPATTERN-PRO?color=blue)
 ![GitHub commit activity](https://img.shields.io/badge/Commits-Split%20Authorship-success)
@@ -17,9 +17,9 @@ Proje, hem klasik string eşleştirme algoritmalarının (KMP, Boyer-Moore) perf
 * **Çoklu Algoritma Kıyaslaması:** Naive, Rabin-Karp, KMP, Boyer-Moore, Suffix Array ve Bloom Filter gibi algoritmaların yürütme süresi (Time) ve bellek (Memory) metrikleri ile karşılaştırılması.
 * **Büyük Veri Desteği:** 200k bp'ye kadar sentetik DNA ve gerçekçi genom (E. coli K-12) verilerini işleyebilme yeteneği.
 * **İleri Görselleştirme:**
-    * **Genome Barcode:** Bulunan motiflerin genom üzerindeki konumlarının haritalanması.
-    * **Pattern Density Heatmap:** Desen yoğunluğunun genom boyunca dağılım grafiği.
-    * **Performans Grafiği:** Algoritma hızlarının görsel olarak kıyaslanması.
+  * **Genome Barcode:** Bulunan motiflerin genom üzerindeki konumlarının haritalanması.
+  * **Pattern Density Heatmap:** Desen yoğunluğunun genom boyunca dağılım grafiği.
+  * **Performans Grafiği:** Algoritma hızlarının görsel olarak kıyaslanması.
 * **İnteraktif Arayüz:** Streamlit ile oluşturulmuş, anlık veri girişi ve sonuç gösterimi sunan kullanıcı dostu tasarım.
 
 ## 🛠️ Proje Yapısı ve Ekip Katkısı
@@ -81,10 +81,7 @@ Uygulama otomatik olarak web tarayıcınızda açılacaktır.
 
 Bu proje, Biyoinformatik Proje Dersi kapsamında iki kişilik bir ekip çalışmasıyla tamamlanmıştır:
 
-  * **Büşra Çakmak** - [https://github.com/bckmk]
-  * **Sena Nur Güngez** - [https://github.com/senanurg]
+* **Büşra Çakmak** - [https://github.com/bckmk]
+* **Sena Nur Güngez** - [https://github.com/senanurg]
 
 <!-- end list -->
-
-```
-```
