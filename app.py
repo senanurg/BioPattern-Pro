@@ -167,7 +167,26 @@ if 'synthetic_genome' not in st.session_state: st.session_state['synthetic_genom
 def load_genome_file(filename):
     if not os.path.exists(filename): return None
     with open(filename, "r") as f: return f.read().strip()
-
+def validate_dna_sequence(sequence: str) -> str:
+    """
+    Cleans the DNA data (removes whitespace, makes uppercase) and checks for invalid characters.
+    Raises ValueError if characters other than A, T, C, G, N are found.
+    """
+    if not sequence: 
+        return ""
+        
+    valid_chars = set("ATCGN") # A, T, C, G (DNA bases) and N (Unknown base)
+    
+    # Clean up: Remove newlines, carriage returns, and spaces; convert to uppercase
+    clean_seq = sequence.upper().replace("\n", "").replace("\r", "").replace(" ", "")
+    
+    # Check for invalid characters using set comparison
+    if not set(clean_seq).issubset(valid_chars):
+        invalid = list(set(clean_seq) - valid_chars)
+        # Raise a specific error that the except block will catch
+        raise ValueError(f"Invalid characters found: {invalid}. Only A, T, C, G, N are allowed.")
+    
+    return clean_seq
 # ==========================================
 # 6. SIDEBAR CONFIGURATION
 # ==========================================
@@ -202,7 +221,24 @@ elif "E. coli" in data_source:
 
 st.sidebar.subheader("🔍 Target Pattern")
 pattern = st.sidebar.text_input("Enter DNA Sequence", pattern_default)
+try:
+    # 1. Validate and clean the main genome data
+    if genome_data:
+        genome_data = validate_dna_sequence(genome_data)
+        
+    # 2. Validate and clean the search pattern
+    if pattern:
+        pattern = validate_dna_sequence(pattern)
 
+except ValueError as e:
+    # Catch validation errors (e.g., forbidden characters)
+    st.sidebar.error(f"🚨 VALIDATION ERROR: {e}")
+    # Stop the execution of the main dashboard below
+    st.stop() 
+except Exception as e:
+    # Catch any other unexpected loading or cleaning errors
+    st.sidebar.error(f"⚠️ AN UNEXPECTED ERROR OCCURRED: {e}")
+    st.stop()
 # ==========================================
 # 7. MAIN DASHBOARD LAYOUT (COMPACT)
 # ==========================================
