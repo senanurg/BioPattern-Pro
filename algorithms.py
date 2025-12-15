@@ -72,3 +72,35 @@ def build_bloom_filter(text, k, bf_size=200000, hash_count=3):
         kmer = text[i:i+k]
         bf.add(kmer)
     return bf
+# --- 4. BOYER-MOORE (Smart Search) ---
+# Week 3 Topic: Skips characters using Bad Character Heuristic.
+def boyer_moore_search(pattern, text):
+    m = len(pattern)
+    n = len(text)
+    if m > n: return []
+
+    # Preprocessing: Bad Character Heuristic
+    # Hangi harf nerede en son görülüyor?
+    bad_char = {}
+    for i in range(m):
+        bad_char[pattern[i]] = i
+
+    matches = []
+    s = 0 
+    while s <= n - m:
+        j = m - 1
+        # Sağdan sola doğru kontrol et
+        while j >= 0 and pattern[j] == text[s + j]:
+            j -= 1
+        
+        if j < 0:
+            # Eşleşme bulundu
+            matches.append(s)
+            # Bir sonraki adıma zıpla
+            s += (m - bad_char.get(text[s + m], -1)) if s + m < n else 1
+        else:
+            # Eşleşme yoksa karakter tablosuna göre zıpla
+            # pattern[j] ile text[s+j] uyuşmadı
+            s += max(1, j - bad_char.get(text[s + j], -1))
+            
+    return matches
