@@ -1,6 +1,8 @@
 import bisect
 
 # --- 1. NAIVE SEARCH ---
+# Brute-force approach: Checks every position in the text.
+# Time Complexity: O(n*m)
 def naive_search(pattern, text):
     matches = []
     n = len(text)
@@ -11,8 +13,12 @@ def naive_search(pattern, text):
     return matches
 
 # --- 2. SUFFIX ARRAY ---
+# Advanced Data Structure: Sorts all suffixes alphabetically.
+# Allows binary search on the text.
+# Time Complexity: O(m*log n) for search
 def build_suffix_array(text):
     suffixes = range(len(text))
+    # Python's timsort is used here for simplicity
     return sorted(suffixes, key=lambda i: text[i:])
 
 def suffix_array_search(pattern, text, suffix_arr):
@@ -20,7 +26,7 @@ def suffix_array_search(pattern, text, suffix_arr):
     n = len(text)
     left, right = 0, n
     
-    # Binary search for left boundary
+    # Binary search for the left boundary
     while left < right:
         mid = (left + right) // 2
         suffix = text[suffix_arr[mid]:]
@@ -42,6 +48,8 @@ def suffix_array_search(pattern, text, suffix_arr):
     return sorted(matches)
 
 # --- 3. BLOOM FILTER ---
+# Probabilistic Data Structure: Space-efficient existence check.
+# Can return "False Positive" but never "False Negative".
 class BloomFilter:
     def __init__(self, size, hash_count):
         self.size = size
@@ -52,6 +60,7 @@ class BloomFilter:
         item_str = str(item)
         hashes = []
         for i in range(self.hash_count):
+            # Simulating multiple hash functions using salt
             h = hash(item_str + str(i)) % self.size
             hashes.append(h)
         return hashes
@@ -72,15 +81,16 @@ def build_bloom_filter(text, k, bf_size=200000, hash_count=3):
         kmer = text[i:i+k]
         bf.add(kmer)
     return bf
+
 # --- 4. BOYER-MOORE (Smart Search) ---
-# Week 3 Topic: Skips characters using Bad Character Heuristic.
+# Skips characters using the Bad Character Heuristic.
+# Best case time complexity: O(n/m)
 def boyer_moore_search(pattern, text):
     m = len(pattern)
     n = len(text)
     if m > n: return []
 
     # Preprocessing: Bad Character Heuristic
-    # Hangi harf nerede en son görülüyor?
     bad_char = {}
     for i in range(m):
         bad_char[pattern[i]] = i
@@ -89,18 +99,13 @@ def boyer_moore_search(pattern, text):
     s = 0 
     while s <= n - m:
         j = m - 1
-        # Sağdan sola doğru kontrol et
         while j >= 0 and pattern[j] == text[s + j]:
             j -= 1
         
         if j < 0:
-            # Eşleşme bulundu
             matches.append(s)
-            # Bir sonraki adıma zıpla
             s += (m - bad_char.get(text[s + m], -1)) if s + m < n else 1
         else:
-            # Eşleşme yoksa karakter tablosuna göre zıpla
-            # pattern[j] ile text[s+j] uyuşmadı
             s += max(1, j - bad_char.get(text[s + j], -1))
             
     return matches
