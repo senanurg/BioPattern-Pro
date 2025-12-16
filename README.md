@@ -14,12 +14,11 @@
 
 ## 📖 Overview
 
-**BioPattern-Pro** is an interactive Streamlit-based dashboard designed for **comparative analysis and visualization** of pattern matching algorithms on large-scale DNA sequences.
+**BioPattern-Pro** is an interactive Streamlit-based dashboard designed for **comparative analysis and visualization** of pattern matching algorithms on large-scale DNA sequences. 
 
 The project provides comprehensive benchmarking of classical string matching algorithms (Naive, KMP, Boyer-Moore, Rabin-Karp) alongside advanced data structures (Suffix Arrays, Bloom Filters) on real genomic datasets, including *E. coli* K-12 and SARS-CoV-2 genomes.
 
 This tool bridges theoretical algorithm knowledge with practical bioinformatics applications, offering researchers and students a platform to:
-
 - Compare algorithm performance metrics (execution time, memory usage)
 - Visualize pattern distribution across genomes
 - Analyze motif discovery efficiency on biological data
@@ -29,9 +28,7 @@ This tool bridges theoretical algorithm knowledge with practical bioinformatics 
 ## 🚀 Key Features
 
 ### ⚡ Multi-Algorithm Benchmarking
-
 Compare the performance of six pattern matching algorithms:
-
 - **Naive (Brute Force)** - Baseline algorithm
 - **Rabin-Karp** - Hash-based matching
 - **Knuth-Morris-Pratt (KMP)** - Prefix function optimization
@@ -40,14 +37,12 @@ Compare the performance of six pattern matching algorithms:
 - **Bloom Filter** - Probabilistic data structure for pattern checking
 
 ### 📊 Advanced Visualization Suite
-
 - **Genome Barcode**: Visual mapping of pattern occurrences across the genome
 - **Pattern Density Heatmap**: Distribution analysis of motif density along genomic coordinates
 - **Performance Comparison Charts**: Interactive bar charts and line plots for algorithm runtime and memory analysis
 - **Statistical Summary Tables**: Comprehensive metrics for each algorithm
 
 ### 🧬 Large-Scale Data Support
-
 - Process synthetic DNA sequences up to **200,000 base pairs**
 - Support for real genomic datasets:
   - *Escherichia coli* K-12 genome (~4.6 Mb) - `ecoli.txt`
@@ -55,7 +50,6 @@ Compare the performance of six pattern matching algorithms:
 - Efficient memory management for large-scale analysis
 
 ### 🎨 Interactive User Interface
-
 - Built with **Streamlit** for real-time data input and visualization
 - Intuitive parameter controls for algorithm selection and pattern specification
 - Responsive design with custom CSS styling
@@ -132,7 +126,7 @@ The application will automatically open in your default web browser at `http://l
 ### Basic Workflow
 
 1. **Select Data Source**: Choose between synthetic DNA generation or use provided genomic files (`ecoli.txt`, `covid19.txt`)
-2. **Configure Parameters**:
+2. **Configure Parameters**: 
    - Set sequence length (for synthetic data)
    - Input target pattern to search
    - Select algorithms for comparison
@@ -164,6 +158,7 @@ Algorithms: KMP, Boyer-Moore, Suffix Array
 
 ## 📂 Project Structure
 
+```
 BIOPATTERN-PRO/
 │
 ├── venv/                     # Virtual environment (ignored in git)
@@ -187,23 +182,30 @@ BIOPATTERN-PRO/
 │
 ├── requirements.txt         # Python dependencies
 └── README.md               # Project documentation (this file)
+```
 
 ---
 
 ## 📊 Performance Benchmarks
 
-Preliminary results on a 100,000 bp synthetic DNA sequence (10 bp pattern):
+Experimental results on SARS-CoV-2 genome (29,903 bp) searching for pattern "ATTAA" (5 bp):
 
-| Algorithm | Time (ms) | Memory (MB) | Matches Found |
-|:----------|----------:|------------:|--------------:|
-| Naive     | 2,450     | 12.3        | 150           |
-| Rabin-Karp| 1,320     | 13.5        | 150           |
-| KMP       | 890       | 14.1        | 150           |
-| Boyer-Moore| 520      | 13.8        | 150           |
-| Suffix Array| 1,150   | 45.2        | 150           |
-| Bloom Filter| 280     | 8.7         | ~150 (probabilistic)|
+| Algorithm | Time (s) | Memory (Bytes) | Matches Found |
+|:----------|----------:|---------------:|--------------:|
+| Naive Search | 0.005121 | 568 | 60 |
+| Rabin-Karp | 0.010948 | 568 | 60 |
+| KMP Search | 0.006792 | 568 | 60 |
+| Boyer-Moore | 0.003556 | 568 | 60 |
+| Suffix Array | 0.000229 | 239,288 | 60 |
+| Bloom Filter | 0.000011 | 1,600,056 | N/A (probabilistic) |
 
-*Note: Results may vary based on pattern characteristics and hardware specifications.*
+**Key Observations:**
+- **Fastest Algorithm:** Bloom Filter (0.000011s) - 465x faster than Naive
+- **Most Memory Efficient:** Naive, Rabin-Karp, KMP, Boyer-Moore (568 bytes)
+- **Best Overall:** Boyer-Moore offers excellent balance (0.003556s, 568 bytes)
+- **Trade-off:** Suffix Array and Bloom Filter sacrifice memory for speed
+
+*Note: Results obtained on SARS-CoV-2 dataset (covid19.txt). Performance may vary based on genome size, pattern characteristics, and hardware specifications.*
 
 ---
 
@@ -226,19 +228,16 @@ python run_benchmark.py
 ## 🚀 Running the Application
 
 ### Option 1: Streamlit Dashboard (Recommended)
-
 ```bash
 streamlit run app.py
 ```
 
 ### Option 2: Command-Line Interface
-
 ```bash
 python main.py --genome ecoli.txt --pattern ATCGATCG --algorithm kmp
 ```
 
 ### Option 3: Benchmark Mode
-
 ```bash
 python run_benchmark.py --genome ecoli.txt --pattern TATAAT --all-algorithms
 ```
@@ -255,7 +254,7 @@ python run_benchmark.py --genome ecoli.txt --pattern TATAAT --all-algorithms
 
 4. Boyer, R. S., & Moore, J. S. (1977). A fast string searching algorithm. *Communications of the ACM*, 20(10), 762-772.
 
-5. NCBI GenBank Database. (2025). Retrieved from <https://www.ncbi.nlm.nih.gov/genbank/>
+5. NCBI GenBank Database. (2025). Retrieved from https://www.ncbi.nlm.nih.gov/genbank/
 
 ---
 
@@ -267,11 +266,11 @@ This project was developed as part of the **Bioinformatics Algorithms** course a
 
 - **Büşra Çakmak** - Backend Development & Algorithm Implementation  
   GitHub: [@bckmk](https://github.com/bckmk)  
-  Email: <Busra.Cakmak@ogr.gidatarim.edu.tr>
+  Email: Busra.Cakmak@ogr.gidatarim.edu.tr
 
 - **Sena Nur Güngez** - Frontend Development & Data Visualization  
   GitHub: [@senanurg](https://github.com/senanurg)  
-  Email: <Sena.Gungez@ogr.gidatarim.edu.tr>
+  Email: Sena.Gungez@ogr.gidatarim.edu.tr
 
 ---
 
@@ -283,8 +282,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Course Instructor: Arda Söylev
-- Konya Food and Agriculture University, Department of Computer Engineering
+- Course Instructor: [Instructor Name]
+- Konya Food and Agriculture University, Department of [Department Name]
 - NCBI for providing publicly accessible genomic datasets
 
 ---
@@ -292,10 +291,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 
 For questions, suggestions, or collaboration opportunities, please reach out via:
-
 - GitHub Issues: [Create an Issue](https://github.com/yourusername/BIOPATTERN-PRO/issues)
-- Email: <Busra.Cakmak@ogr.gidatarim.edu.tr> or <Sena.Gungez@ogr.gidatarim.edu.tr>
+- Email: Busra.Cakmak@ogr.gidatarim.edu.tr or Sena.Gungez@ogr.gidatarim.edu.tr
 
 ---
 
 **⭐ If you find this project useful, please consider giving it a star on GitHub!**
+
+
+
