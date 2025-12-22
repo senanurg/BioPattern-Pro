@@ -19,6 +19,7 @@
 The project provides comprehensive benchmarking of classical string matching algorithms (Naive, KMP, Boyer-Moore, Rabin-Karp) alongside advanced data structures (Suffix Arrays, Bloom Filters) on real genomic datasets, including *E. coli* K-12 and SARS-CoV-2 genomes.
 
 This tool bridges theoretical algorithm knowledge with practical bioinformatics applications, offering researchers and students a platform to:
+
 - Compare algorithm performance metrics (execution time, memory usage)
 - Visualize pattern distribution across genomes
 - Analyze motif discovery efficiency on biological data
@@ -28,7 +29,9 @@ This tool bridges theoretical algorithm knowledge with practical bioinformatics 
 ## 🚀 Key Features
 
 ### ⚡ Multi-Algorithm Benchmarking
+
 Compare the performance of six pattern matching algorithms:
+
 - **Naive (Brute Force)** - Baseline algorithm
 - **Rabin-Karp** - Hash-based matching
 - **Knuth-Morris-Pratt (KMP)** - Prefix function optimization
@@ -37,12 +40,14 @@ Compare the performance of six pattern matching algorithms:
 - **Bloom Filter** - Probabilistic data structure for pattern checking
 
 ### 📊 Advanced Visualization Suite
+
 - **Genome Barcode**: Visual mapping of pattern occurrences across the genome
 - **Pattern Density Heatmap**: Distribution analysis of motif density along genomic coordinates
 - **Performance Comparison Charts**: Interactive bar charts and line plots for algorithm runtime and memory analysis
 - **Statistical Summary Tables**: Comprehensive metrics for each algorithm
 
 ### 🧬 Large-Scale Data Support
+
 - Process synthetic DNA sequences up to **200,000 base pairs**
 - Support for real genomic datasets:
   - *Escherichia coli* K-12 genome (~4.6 Mb) - `ecoli.txt`
@@ -50,6 +55,7 @@ Compare the performance of six pattern matching algorithms:
 - Efficient memory management for large-scale analysis
 
 ### 🎨 Interactive User Interface
+
 - Built with **Streamlit** for real-time data input and visualization
 - Intuitive parameter controls for algorithm selection and pattern specification
 - Responsive design with custom CSS styling
@@ -200,6 +206,7 @@ Experimental results on SARS-CoV-2 genome (29,903 bp) searching for pattern "ATT
 | Bloom Filter | 0.000011 | 1,600,056 | N/A (probabilistic) |
 
 **Key Observations:**
+
 - **Fastest Algorithm:** Bloom Filter (0.000011s) - 465x faster than Naive
 - **Most Memory Efficient:** Naive, Rabin-Karp, KMP, Boyer-Moore (568 bytes)
 - **Best Overall:** Boyer-Moore offers excellent balance (0.003556s, 568 bytes)
@@ -228,16 +235,19 @@ python run_benchmark.py
 ## 🚀 Running the Application
 
 ### Option 1: Streamlit Dashboard (Recommended)
+
 ```bash
 streamlit run app.py
 ```
 
 ### Option 2: Command-Line Interface
+
 ```bash
 python main.py --genome ecoli.txt --pattern ATCGATCG --algorithm kmp
 ```
 
 ### Option 3: Benchmark Mode
+
 ```bash
 python run_benchmark.py --genome ecoli.txt --pattern TATAAT --all-algorithms
 ```
@@ -254,7 +264,7 @@ python run_benchmark.py --genome ecoli.txt --pattern TATAAT --all-algorithms
 
 4. Boyer, R. S., & Moore, J. S. (1977). A fast string searching algorithm. *Communications of the ACM*, 20(10), 762-772.
 
-5. NCBI GenBank Database. (2025). Retrieved from https://www.ncbi.nlm.nih.gov/genbank/
+5. NCBI GenBank Database. (2025). Retrieved from <https://www.ncbi.nlm.nih.gov/genbank/>
 
 ---
 
@@ -266,11 +276,11 @@ This project was developed as part of the **Bioinformatics Algorithms** course a
 
 - **Büşra Çakmak** - Backend Development & Algorithm Implementation  
   GitHub: [@bckmk](https://github.com/bckmk)  
-  Email: Busra.Cakmak@ogr.gidatarim.edu.tr
+  Email: <Busra.Cakmak@ogr.gidatarim.edu.tr>
 
 - **Sena Nur Güngez** - Frontend Development & Data Visualization  
   GitHub: [@senanurg](https://github.com/senanurg)  
-  Email: Sena.Gungez@ogr.gidatarim.edu.tr
+  Email: <Sena.Gungez@ogr.gidatarim.edu.tr>
 
 ---
 
@@ -278,21 +288,15 @@ This project was developed as part of the **Bioinformatics Algorithms** course a
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-## 🙏 Acknowledgments
-
-- Course Instructor: [Instructor Name]
-- Konya Food and Agriculture University, Department of [Department Name]
-- NCBI for providing publicly accessible genomic datasets
 
 ---
 
 ## 📧 Contact
 
 For questions, suggestions, or collaboration opportunities, please reach out via:
+
 - GitHub Issues: [Create an Issue](https://github.com/yourusername/BIOPATTERN-PRO/issues)
-- Email: Busra.Cakmak@ogr.gidatarim.edu.tr or Sena.Gungez@ogr.gidatarim.edu.tr
+- Email: <Busra.Cakmak@ogr.gidatarim.edu.tr> or <Sena.Gungez@ogr.gidatarim.edu.tr>
 
 ---
 
